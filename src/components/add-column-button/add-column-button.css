@@ -9,7 +9,7 @@
   transition: 0.25s;
 }
 
-.add-column:hover {
+.add-column-title:hover {
   cursor: pointer;
 }
 

@@ -46,7 +46,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ handleClose }) => {
         <Button type="submit" color="primary">
           add
         </Button>
-        <Button style={{}} color="secondary" onClick={handleClose}>
+        <Button style={{ zIndex: 10 }} color="secondary" onClick={handleClose}>
           cancel
         </Button>
       </div>

@@ -38,9 +38,12 @@ const AddColumnButton: FC = () => {
     <div
       ref={addColumnRef}
       className={isClicked ? "add-column add" : "add-column"}
-      onClick={handleOpen}
     >
-      {!isClicked && <span className="add-column-title">Add new column</span>}
+      {!isClicked && (
+        <span className="add-column-title" onClick={handleOpen}>
+          Add new column
+        </span>
+      )}
       {isClicked && <AddColumnForm handleClose={handleClose} />}
     </div>
   );

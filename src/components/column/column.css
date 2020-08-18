@@ -17,3 +17,13 @@
   width: 95%;
   margin: 0;
 }
+
+.add-column {
+  z-index: 0;
+}
+
+.close-icon {
+  position: absolute;
+  left: calc(100% - 27px);
+  cursor: pointer;
+}
