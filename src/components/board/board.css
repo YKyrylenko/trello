@@ -1,0 +1,6 @@
+.board {
+  display: flex;
+  height: calc(100vh - 74px);
+  padding: 10px 0 0 10px;
+  background: #3f51b5;
+}
