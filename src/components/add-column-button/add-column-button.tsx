@@ -4,44 +4,45 @@ import AddColumnForm from "../add-column-form";
 import "./add-column-button.css";
 
 const AddColumnButton: FC = () => {
-  const [isClicked, setIsClicked]: [boolean, any] = useState(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const addColumnRef = useRef<HTMLDivElement>(null);
 
-  const handleOutsideClick = (e: any): void => {
+  const handleOpen = (): void => {
+    setIsClicked(true);
+  };
+
+  const handleClose = (): void => {
+    setIsClicked(false);
+    console.log(isClicked);
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleOutsideClick = (e: Event) => {
     if (
       addColumnRef.current &&
       isClicked &&
-      !addColumnRef.current.contains(e.target)
+      !addColumnRef.current.contains(e.target as Node)
     ) {
       setIsClicked(false);
     }
   };
 
-  const handleOpen = (e: any): void => {
-    setIsClicked(true);
-  };
-
-  const handleClose = (e: any): void => {
-    setIsClicked(false);
-  };
-
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleOutsideClick]);
 
   return (
-    <React.Fragment>
-      <div
-        ref={addColumnRef}
-        className={isClicked ? "add-column add" : "add-column"}
-        onClick={handleOpen}
-      >
-        {!isClicked && <span className="add-column-title">Add new column</span>}
-        {isClicked && <AddColumnForm handleClose={handleClose} />}
-      </div>
-    </React.Fragment>
+    <div
+      ref={addColumnRef}
+      className={isClicked ? "add-column add" : "add-column"}
+      onClick={handleOpen}
+    >
+      {!isClicked && <span className="add-column-title">Add new column</span>}
+      {isClicked && <AddColumnForm handleClose={handleClose} />}
+    </div>
   );
 };
 

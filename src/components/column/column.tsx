@@ -15,23 +15,23 @@ const Column: FC<ColumnProps> = ({ column }) => {
 
   const dispatch = useDispatch();
 
-  const [isTileChange, setIsTitleChange]: [boolean, any] = useState(false);
+  const [isTileChange, setIsTitleChange] = useState<boolean>(false);
 
-  const [newTitle, setNewTitle]: [string, any] = useState(title);
+  const [newTitle, setNewTitle] = useState<string>(title);
 
-  const handleTitleClick = (e: any): void => {
+  const handleTitleClick = (): void => {
     setIsTitleChange(true);
   };
 
-  const handleChange = (e: any): void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewTitle(e.target.value);
   };
 
-  const handleDelete = (e: any): void => {
+  const handleDelete = (): void => {
     dispatch(deleteColumn(id));
   };
 
-  const onSubmit = (e: any): void => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     dispatch(changeColumnTitle(id, newTitle));

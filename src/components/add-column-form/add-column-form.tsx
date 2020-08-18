@@ -7,18 +7,18 @@ import Column from "../../models/column";
 import "./add-column-form.css";
 
 interface AddColumnFormProps {
-  handleClose?: any;
+  handleClose: () => void;
 }
 
 const AddColumnForm: FC<AddColumnFormProps> = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const [newColumnTitle, setNewColumnTitle]: [string, any] = useState("");
+  const [newColumnTitle, setNewColumnTitle] = useState<string>("");
 
-  const handleInputChange = (e: any): void => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewColumnTitle(e.target.value);
   };
 
-  const onSubmit = (e: any): void => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const column: Column = {
       id: Date.now(),
@@ -46,7 +46,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ handleClose }) => {
         <Button type="submit" color="primary">
           add
         </Button>
-        <Button color="secondary" onClick={handleClose}>
+        <Button style={{}} color="secondary" onClick={handleClose}>
           cancel
         </Button>
       </div>
