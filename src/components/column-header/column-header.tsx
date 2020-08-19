@@ -16,6 +16,11 @@ const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
 
   const [newTitle, setNewTitle] = useState<string>(title);
 
+  const changeTitle = () => {
+    dispatch(changeColumnTitle(id, newTitle));
+    setIsTitleChange(false);
+  };
+
   const handleTitleClick = (): void => {
     setIsTitleChange(true);
   };
@@ -26,8 +31,11 @@ const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(changeColumnTitle(id, newTitle));
-    setIsTitleChange(false);
+    changeTitle();
+  };
+
+  const onBlur = (): void => {
+    changeTitle();
   };
 
   return (
@@ -40,6 +48,7 @@ const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
             value={newTitle}
             autoFocus={true}
             onChange={handleChange}
+            onBlur={onBlur}
           />
         </form>
       )}
