@@ -1,6 +1,8 @@
 .card {
   width: 230px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   margin-bottom: 10px;
   word-wrap: break-word;
@@ -14,4 +16,9 @@
 
 .card:hover {
   background-color: rgba(168, 168, 168, 0.8);
+}
+
+.edit-icon:hover {
+  background-color: rgba(1, 1, 1, 0.3);
+  border-radius: 5px;
 }

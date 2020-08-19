@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeTaskTitle } from "../../actions/taskActions";
+import EditIcon from "@material-ui/icons/Edit";
 
 import "./card.css";
 
@@ -23,7 +24,7 @@ const Card: FC<CardProps> = ({ title, id, columnId }) => {
     setNewTitle(e.target.value);
   };
 
-  const handeClick = (): void => {
+  const handeCardClick = (): void => {
     setIsClicked(true);
   };
 
@@ -37,8 +38,13 @@ const Card: FC<CardProps> = ({ title, id, columnId }) => {
   return (
     <React.Fragment>
       {!isClicked && (
-        <div className="card" onClick={handeClick}>
+        <div className="card">
           <span className="card-title">{title}</span>
+          <EditIcon
+            fontSize="small"
+            className="edit-icon"
+            onClick={handeCardClick}
+          />
         </div>
       )}
       {isClicked && (
