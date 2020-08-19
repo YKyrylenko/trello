@@ -3,7 +3,7 @@ import {
   DELETE_COLUMN,
   CHANGE_COLUMN_TITLE,
   ADD_TASK,
-  CHANHE_TASK_TITLE,
+  CHANGE_TASK_TITLE,
 } from "./../actions/index";
 import Column from "../models/column";
 import { ColumnActionTypes } from "../actions/columnActions";
@@ -63,17 +63,18 @@ export const columnReducer = (
         ),
       };
 
-    case CHANHE_TASK_TITLE:
+    case CHANGE_TASK_TITLE:
       const { taskId, columnId, newTitle } = action.payload;
       return {
         ...state,
         columns: state.columns.map((column) => {
           if (column.id === columnId) {
-            let tasks: Task[] = column.tasks;
-            tasks = tasks.map((task) =>
-              task.id === taskId ? { ...task, title: newTitle } : task
-            );
-            return { ...column, tasks };
+            return {
+              ...column,
+              tasks: column.tasks.map((task) =>
+                task.id === taskId ? { ...task, title: newTitle } : task
+              ),
+            };
           } else {
             return column;
           }

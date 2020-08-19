@@ -1,4 +1,4 @@
-import { ADD_TASK, CHANHE_TASK_TITLE } from "./index";
+import { ADD_TASK, CHANGE_TASK_TITLE } from "./index";
 import Task from "../models/task";
 
 interface AddTaskAction {
@@ -10,7 +10,7 @@ interface AddTaskAction {
 }
 
 interface ChangeTaskTitleAction {
-  type: typeof CHANHE_TASK_TITLE;
+  type: typeof CHANGE_TASK_TITLE;
   payload: {
     taskId: number;
     newTitle: string;
@@ -31,7 +31,7 @@ export const changeTaskTitle = (
   taskId: number,
   columnId: number
 ): ChangeTaskTitleAction => ({
-  type: CHANHE_TASK_TITLE,
+  type: CHANGE_TASK_TITLE,
   payload: {
     taskId,
     newTitle,
