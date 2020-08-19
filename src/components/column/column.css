@@ -1,11 +1,14 @@
 .column {
   min-width: 270px;
-  height: 200px;
+  height: fit-content;
   position: relative;
   border-radius: 10px;
   background: white;
   margin-right: 10px;
   padding: 5px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
 }
 
 .column-header {
@@ -26,4 +29,8 @@
   position: absolute;
   left: calc(100% - 27px);
   cursor: pointer;
+}
+
+.card-list {
+  padding: 10px;
 }

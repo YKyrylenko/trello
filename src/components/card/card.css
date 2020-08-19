@@ -1,0 +1,17 @@
+.card {
+  width: 230px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  background-color: rgb(168, 168, 168);
+  color: #3f51b5;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+}
+
+.card:hover {
+  background-color: rgba(168, 168, 168, 0.8);
+}

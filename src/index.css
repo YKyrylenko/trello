@@ -20,3 +20,30 @@ input {
 input:focus {
   outline-color: blue;
 }
+
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  margin: 0px;
+  width: calc(100% - 20px);
+  resize: inherit;
+  background: rgb(168, 168, 168);
+  border: none;
+  border-radius: 5px;
+  color: #3f51b5;
+  box-shadow: rgba(50, 50, 50, 0.77) 2px 2px 5px 0px;
+}
+
+textarea:hover::-webkit-scrollbar {
+  background: rgba(1, 1, 1, 0.1);
+  border-radius: 5px;
+}
+
+textarea:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+textarea:focus {
+  outline: none;
+}

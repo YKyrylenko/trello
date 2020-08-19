@@ -13,13 +13,13 @@ interface StateProps {
 
 const Board: FC = () => {
   const { columns } = useSelector<RootState, StateProps>(
-    (state: RootState) => state.column
+    (state) => state.column
   );
 
   return (
     <div className="board">
-      {columns.map((column) => (
-        <Column column={column} key={column.id} />
+      {columns.map((column, index) => (
+        <Column column={column} index={index} key={column.id} />
       ))}
       <AddColumnButton />
     </div>
