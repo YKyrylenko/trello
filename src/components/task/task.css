@@ -1,0 +1,46 @@
+.task {
+  width: 230px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  word-break: break-all;
+  background-color: rgb(168, 168, 168);
+  color: #3f51b5;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+}
+
+.task:hover {
+  background-color: rgba(168, 168, 168, 0.8);
+}
+
+.edit-icon:hover {
+  background-color: rgba(50, 50, 50, 0.3);
+}
+
+.change-title {
+  width: 230px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgb(168, 168, 168);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  color: rgb(63, 81, 181);
+  resize: none;
+}
+
+.change-title::-webkit-scrollbar {
+  background: rgba(1, 1, 1, 0.1);
+  border-radius: 5px;
+}
+
+.change-title::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}

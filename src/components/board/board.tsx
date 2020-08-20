@@ -13,7 +13,7 @@ interface StateProps {
 
 const Board: FC = () => {
   const { columns } = useSelector<RootState, StateProps>(
-    (state: RootState) => state.column
+    (state) => state.column
   );
 
   return (

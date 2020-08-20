@@ -1,0 +1,10 @@
+.column-header {
+  padding: 10px;
+  cursor: pointer;
+  word-break: break-all;
+}
+
+.change-title {
+  width: 95%;
+  margin: 0;
+}
