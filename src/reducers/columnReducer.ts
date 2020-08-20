@@ -8,7 +8,6 @@ import {
 import Column from "../models/column";
 import { ColumnActionTypes } from "../actions/columnActions";
 import { TaskActionsType } from "./../actions/taskActions";
-import Task from "../models/task";
 
 interface ColumnState {
   columns: Column[];

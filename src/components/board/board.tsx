@@ -18,8 +18,8 @@ const Board: FC = () => {
 
   return (
     <div className="board">
-      {columns.map((column, index) => (
-        <Column column={column} index={index} key={column.id} />
+      {columns.map((column) => (
+        <Column column={column} key={column.id} />
       ))}
       <AddColumnButton />
     </div>

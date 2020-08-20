@@ -24,7 +24,7 @@ const Task: FC<TaskProps> = ({ title, id, columnId }) => {
     setNewTitle(e.target.value);
   };
 
-  const handeTaskClick = (): void => {
+  const handleTaskClick = (): void => {
     setIsClicked(true);
   };
 
@@ -43,7 +43,7 @@ const Task: FC<TaskProps> = ({ title, id, columnId }) => {
           <EditIcon
             fontSize="small"
             className="edit-icon"
-            onClick={handeTaskClick}
+            onClick={handleTaskClick}
           />
         </div>
       )}

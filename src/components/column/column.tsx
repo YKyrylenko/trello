@@ -13,18 +13,17 @@ import AddTask from "../add-task";
 
 interface ColumnProps {
   column: ColumnModel;
-  index: number;
 }
 
 interface StateProps {
   tasks: TaskModel[];
 }
 
-const Column: FC<ColumnProps> = ({ column, index }) => {
+const Column: FC<ColumnProps> = ({ column }) => {
   const { title, id } = column;
 
   const { tasks } = useSelector<RootState, StateProps>(
-    (state) => state.column.columns[index]
+    (state) => state.column.columns.filter((column) => column.id === id)[0]
   );
 
   const dispatch = useDispatch();
