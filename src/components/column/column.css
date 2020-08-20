@@ -1,4 +1,5 @@
 .column {
+  min-width: 270px;
   max-width: 270px;
   max-height: calc(100% - 20px);
   height: fit-content;
@@ -22,24 +23,24 @@
   cursor: pointer;
 }
 
-.card-list {
+.tasks-list {
   max-height: calc(100vh - 271px);
   padding: 10px;
   margin-bottom: 10px;
   overflow-y: hidden;
 }
 
-.card-list:hover {
+.tasks-list:hover {
   overflow-y: auto;
 }
 
-.card-list::-webkit-scrollbar {
+.tasks-list::-webkit-scrollbar {
   width: 5px;
   background: rgba(1, 1, 1, 0.1);
   border-radius: 5px;
 }
 
-.card-list::-webkit-scrollbar-thumb {
+.tasks-list::-webkit-scrollbar-thumb {
   width: 5px;
   background: rgba(1, 1, 1, 0.3);
   border-radius: 5px;

@@ -1,8 +1,8 @@
-.add-card {
+.add-task {
   padding: 0 10px 10px 10px;
 }
 
-.add-card-button {
+.add-task-button {
   display: flex;
   align-items: center;
   height: 28px;
@@ -11,10 +11,10 @@
   cursor: pointer;
 }
 
-.add-card-button-title {
+.add-task-button-title {
   color: rgba(1, 1, 1, 0.5);
 }
 
-.add-card-button:hover {
+.add-task-button:hover {
   background: rgba(1, 1, 1, 0.1);
 }

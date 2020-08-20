@@ -1,10 +1,10 @@
-.add-card-form-actions {
+.add-task-form-actions {
   display: flex;
   justify-content: space-between;
   padding: 10px 0 0;
 }
 
-.add-card-form-input {
+.add-task-form-input {
   margin-bottom: 10px;
   padding: 10px;
   margin: 0px;
@@ -17,16 +17,16 @@
   box-shadow: rgba(50, 50, 50, 0.77) 2px 2px 5px 0px;
 }
 
-.add-card-form-input::-webkit-scrollbar {
+.add-task-form-input::-webkit-scrollbar {
   background: rgba(1, 1, 1, 0.1);
   border-radius: 5px;
 }
 
-.add-card-form-input:hover::-webkit-scrollbar-thumb {
+.add-task-form-input:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
 }
 
-.add-card-form-input:focus {
+.add-task-form-input:focus {
   outline: none;
 }

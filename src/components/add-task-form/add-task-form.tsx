@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../actions/taskActions";
 import Button from "@material-ui/core/Button";
 
-import "./add-card-form.css";
+import "./add-task-form.css";
 
-interface AddCardFormProps {
+interface AddTaskFormProps {
   columnId: number;
   handleClose: () => void;
 }
 
-const AddCardForm: FC<AddCardFormProps> = ({ columnId, handleClose }) => {
+const AddTaskForm: FC<AddTaskFormProps> = ({ columnId, handleClose }) => {
   const dispatch = useDispatch();
 
   const [taskName, setTaskName] = useState<string>("");
@@ -34,14 +34,14 @@ const AddCardForm: FC<AddCardFormProps> = ({ columnId, handleClose }) => {
   };
 
   return (
-    <form className="add-card-form" onSubmit={onSubmit}>
+    <form className="add-task-form" onSubmit={onSubmit}>
       <textarea
-        className="add-card-form-input"
+        className="add-task-form-input"
         placeholder="Enter new task"
         onChange={handleInputChange}
         value={taskName}
       />
-      <div className="add-card-form-actions">
+      <div className="add-task-form-actions">
         <Button variant="contained" color="default" type="submit">
           Add
         </Button>
@@ -53,4 +53,4 @@ const AddCardForm: FC<AddCardFormProps> = ({ columnId, handleClose }) => {
   );
 };
 
-export default AddCardForm;
+export default AddTaskForm;

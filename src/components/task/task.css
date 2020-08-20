@@ -1,4 +1,4 @@
-.card {
+.task {
   width: 230px;
   padding: 10px;
   display: flex;
@@ -14,7 +14,7 @@
   box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
 }
 
-.card:hover {
+.task:hover {
   background-color: rgba(168, 168, 168, 0.8);
 }
 

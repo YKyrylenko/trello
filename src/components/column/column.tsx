@@ -5,11 +5,11 @@ import { deleteColumn } from "../../actions/columnActions";
 import ColumnModel from "../../models/column";
 import CloseIcon from "@material-ui/icons/Close";
 import ColumnHeader from "../column-header";
-import Card from "../card";
+import Task from "../task";
 
 import "./column.css";
-import Task from "../../models/task";
-import AddCard from "../add-card";
+import TaskModel from "../../models/task";
+import AddTask from "../add-task";
 
 interface ColumnProps {
   column: ColumnModel;
@@ -17,7 +17,7 @@ interface ColumnProps {
 }
 
 interface StateProps {
-  tasks: Task[];
+  tasks: TaskModel[];
 }
 
 const Column: FC<ColumnProps> = ({ column, index }) => {
@@ -37,12 +37,12 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
     <div className="column">
       <CloseIcon className="close-icon" onClick={handleDelete} />
       <ColumnHeader title={title} id={id} />
-      <div className="card-list">
+      <div className="tasks-list">
         {tasks.map((task) => (
-          <Card title={task.title} id={task.id} columnId={id} key={task.id} />
+          <Task title={task.title} id={task.id} columnId={id} key={task.id} />
         ))}
       </div>
-      <AddCard columnId={id} />
+      <AddTask columnId={id} />
     </div>
   );
 };

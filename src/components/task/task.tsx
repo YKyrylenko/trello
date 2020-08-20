@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { changeTaskTitle } from "../../actions/taskActions";
 import EditIcon from "@material-ui/icons/Edit";
 
-import "./card.css";
+import "./task.css";
 
-interface CardProps {
+interface TaskProps {
   id: number;
   title: string;
   columnId: number;
 }
 
-const Card: FC<CardProps> = ({ title, id, columnId }) => {
+const Task: FC<TaskProps> = ({ title, id, columnId }) => {
   const dispatch = useDispatch();
 
   const [newTitle, setNewTitle] = useState<string>(title);
@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({ title, id, columnId }) => {
     setNewTitle(e.target.value);
   };
 
-  const handeCardClick = (): void => {
+  const handeTaskClick = (): void => {
     setIsClicked(true);
   };
 
@@ -38,12 +38,12 @@ const Card: FC<CardProps> = ({ title, id, columnId }) => {
   return (
     <React.Fragment>
       {!isClicked && (
-        <div className="card">
-          <span className="card-title">{title}</span>
+        <div className="task">
+          <span className="task-title">{title}</span>
           <EditIcon
             fontSize="small"
             className="edit-icon"
-            onClick={handeCardClick}
+            onClick={handeTaskClick}
           />
         </div>
       )}
@@ -60,4 +60,4 @@ const Card: FC<CardProps> = ({ title, id, columnId }) => {
   );
 };
 
-export default Card;
+export default Task;
