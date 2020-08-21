@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeTaskTitle } from "../../actions/taskActions";
+import { Draggable } from "react-beautiful-dnd";
 import EditIcon from "@material-ui/icons/Edit";
 
 import "./task.css";
@@ -9,9 +10,10 @@ interface TaskProps {
   id: number;
   title: string;
   columnId: number;
+  index: number;
 }
 
-const Task: FC<TaskProps> = ({ title, id, columnId }) => {
+const Task: FC<TaskProps> = ({ title, id, columnId, index }) => {
   const dispatch = useDispatch();
 
   const [newTitle, setNewTitle] = useState<string>(title);
@@ -38,14 +40,23 @@ const Task: FC<TaskProps> = ({ title, id, columnId }) => {
   return (
     <React.Fragment>
       {!isClicked && (
-        <div className="task">
-          <span className="task-title">{title}</span>
-          <EditIcon
-            fontSize="small"
-            className="edit-icon"
-            onClick={handleTaskClick}
-          />
-        </div>
+        <Draggable draggableId={`${id}`} index={index}>
+          {(provided) => (
+            <div
+              className="task"
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <span className="task-title">{title}</span>
+              <EditIcon
+                fontSize="small"
+                className="edit-icon"
+                onClick={handleTaskClick}
+              />
+            </div>
+          )}
+        </Draggable>
       )}
       {isClicked && (
         <textarea
