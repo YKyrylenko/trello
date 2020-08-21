@@ -39,8 +39,8 @@ const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
   };
 
   return (
-    <div className="column-header" onClick={handleTitleClick}>
-      {!isTileChange && <span>{title} </span>}
+    <div className="column-header">
+      {!isTileChange && <span onClick={handleTitleClick}>{title} </span>}
       {isTileChange && (
         <form onSubmit={onSubmit}>
           <input
