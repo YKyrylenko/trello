@@ -44,7 +44,7 @@ const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
       {isTileChange && (
         <form onSubmit={onSubmit}>
           <input
-            className="change-title"
+            className="change-title-input"
             value={newTitle}
             autoFocus={true}
             onChange={handleChange}

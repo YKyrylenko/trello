@@ -65,7 +65,6 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
               </div>
             )}
           </Droppable>
-
           <AddTask columnId={id} />
         </div>
       )}
