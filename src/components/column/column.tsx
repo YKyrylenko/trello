@@ -1,9 +1,7 @@
 import React, { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../reducers";
+import { useDispatch } from "react-redux";
 import { deleteColumn } from "../../actions/columnActions";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import TaskModel from "../../models/task";
 import AddTask from "../add-task";
 import ColumnModel from "../../models/column";
 import CloseIcon from "@material-ui/icons/Close";
@@ -17,16 +15,8 @@ interface ColumnProps {
   column: ColumnModel;
 }
 
-interface StateProps {
-  tasks: TaskModel[];
-}
-
 const Column: FC<ColumnProps> = ({ column, index }) => {
-  const { title, id } = column;
-
-  const { tasks } = useSelector<RootState, StateProps>(
-    (state) => state.column.columns.filter((column) => column.id === id)[0]
-  );
+  const { title, id, tasks } = column;
 
   const dispatch = useDispatch();
 
