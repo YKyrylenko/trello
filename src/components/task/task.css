@@ -2,6 +2,7 @@
   width: 230px;
   padding: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -14,12 +15,32 @@
   box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
 }
 
+.badges {
+  margin-top: 10px;
+}
+
+.task-title {
+  width: 90%;
+}
+
 .task:hover {
   background-color: rgba(168, 168, 168, 0.8);
 }
 
 .edit-icon:hover {
   background-color: rgba(50, 50, 50, 0.3);
+}
+
+.expiredTerm {
+  background-color: red;
+}
+
+.oneDayLeftTerm {
+  background-color: yellow;
+}
+
+.equalTerm {
+  background-color: darkgoldenrod;
 }
 
 .change-title {

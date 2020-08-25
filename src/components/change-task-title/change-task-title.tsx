@@ -8,14 +8,12 @@ interface ChangeTaskTitleProps {
   taskId: number;
   title: string;
   columnId: number;
-  toggleTask: () => void;
 }
 
 const ChangeTaskTitle: FC<ChangeTaskTitleProps> = ({
   title,
   taskId,
   columnId,
-  toggleTask,
 }) => {
   const dispatch = useDispatch();
   const [newTitle, setNewTitle] = useState<string>(title);
@@ -30,14 +28,13 @@ const ChangeTaskTitle: FC<ChangeTaskTitleProps> = ({
     if (newTitle !== title) {
       dispatch(changeTaskTitle(newTitle, taskId, columnId));
     }
-    toggleTask();
   };
 
   return (
     <textarea
       className="change-task-title"
       value={newTitle}
-      autoFocus={true}
+      autoFocus={false}
       onChange={handleInputChange}
       onBlur={handleBlur}
     />

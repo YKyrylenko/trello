@@ -3,15 +3,18 @@ import {
   DELETE_COLUMN,
   CHANGE_COLUMN_TITLE,
   ADD_TASK,
+  ADD_TASK_DESCRIPTION,
   CHANGE_TASK_TITLE,
   TASK_DND_SAME_COLUMN,
   TASK_DND_DIFFERENT_COLUMN,
   COLUMN_DND,
+  ADD_TASK_TERM,
 } from "./../actions/index";
 import Column from "../models/column";
 import { ColumnActionTypes } from "../actions/columnActions";
 import { TaskActionsType } from "./../actions/taskActions";
 import { DragAndDropActionsTypes } from "./../actions/dragAndDropActions";
+import Task from "../models/task";
 
 interface ColumnState {
   columns: Column[];
@@ -107,13 +110,11 @@ export const columnReducer = (
     case TASK_DND_DIFFERENT_COLUMN: {
       const { source, destination } = action.payload;
       let columns = [...state.columns];
-      let task: any;
+      let task: Task;
       columns = columns.map((column) => {
         if (column.id === +source.droppableId) {
           task = column.tasks.splice(source.index, 1)[0];
-          return {
-            ...column,
-          };
+          return column;
         } else {
           return column;
         }
@@ -121,14 +122,11 @@ export const columnReducer = (
       columns = columns.map((column) => {
         if (column.id === +destination.droppableId) {
           column.tasks.splice(destination.index, 0, task);
-          return {
-            ...column,
-          };
+          return column;
         }
-        return {
-          ...column,
-        };
+        return column;
       });
+
       return {
         ...state,
         columns,
@@ -142,6 +140,40 @@ export const columnReducer = (
       return {
         ...state,
         columns,
+      };
+    }
+
+    case ADD_TASK_DESCRIPTION: {
+      const { taskId, columnId, description } = action.payload;
+      return {
+        ...state,
+        columns: state.columns.map((column) =>
+          column.id === columnId
+            ? {
+                ...column,
+                tasks: column.tasks.map((task) =>
+                  task.id === taskId ? { ...task, description } : task
+                ),
+              }
+            : column
+        ),
+      };
+    }
+
+    case ADD_TASK_TERM: {
+      const { taskId, columnId, term } = action.payload;
+      return {
+        ...state,
+        columns: state.columns.map((column) =>
+          column.id === columnId
+            ? {
+                ...column,
+                tasks: column.tasks.map((task) =>
+                  task.id === taskId ? { ...task, term } : task
+                ),
+              }
+            : column
+        ),
       };
     }
 
