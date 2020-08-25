@@ -1,0 +1,26 @@
+.add-column {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 270px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: 0.25s;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+}
+
+.add-column-title:hover {
+  cursor: pointer;
+}
+
+.add-column-title {
+  padding-left: 10px;
+}
+
+.add {
+  height: 100px;
+  transition: 0.25s;
+}

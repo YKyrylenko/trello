@@ -1,0 +1,47 @@
+.column {
+  min-width: 270px;
+  max-width: 270px;
+  max-height: calc(100% - 20px);
+  height: fit-content;
+  position: relative;
+  border-radius: 10px;
+  background: white;
+  margin-right: 10px;
+  padding: 5px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.77);
+}
+
+.add-column {
+  z-index: 0;
+}
+
+.close-icon {
+  position: absolute;
+  left: calc(100% - 27px);
+  cursor: pointer;
+}
+
+.tasks-list {
+  max-height: calc(100vh - 271px);
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow-y: hidden;
+}
+
+.tasks-list:hover {
+  overflow-y: auto;
+}
+
+.tasks-list::-webkit-scrollbar {
+  width: 5px;
+  background: rgba(1, 1, 1, 0.1);
+  border-radius: 5px;
+}
+
+.tasks-list::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: rgba(1, 1, 1, 0.3);
+  border-radius: 5px;
+}
