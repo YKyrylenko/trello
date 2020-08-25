@@ -14,7 +14,6 @@ const AddColumnButton: FC = () => {
 
   const handleClose = (): void => {
     setIsClicked(false);
-    console.log(isClicked);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

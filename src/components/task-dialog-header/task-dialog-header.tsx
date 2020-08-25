@@ -9,7 +9,6 @@ interface TaskDialogHeaderProps {
   taskId: number;
   taskTitle: string;
   columnId: number;
-  columnTitle: string;
 }
 
 const TaskDialogHeader: FC<TaskDialogHeaderProps> = ({
@@ -19,7 +18,13 @@ const TaskDialogHeader: FC<TaskDialogHeaderProps> = ({
 }) => {
   return (
     <div className="task-dialog-header">
-      <DialogTitle></DialogTitle>
+      <DialogTitle>
+        <ChangeTaskTitle
+          title={taskTitle}
+          taskId={taskId}
+          columnId={columnId}
+        />
+      </DialogTitle>
     </div>
   );
 };

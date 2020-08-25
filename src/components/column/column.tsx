@@ -43,13 +43,7 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                 {...provided.droppableProps}
               >
                 {tasks.map((task, index) => (
-                  <Task
-                    title={task.title}
-                    id={task.id}
-                    columnId={id}
-                    key={task.id}
-                    index={index}
-                  />
+                  <Task task={task} columnId={id} key={task.id} index={index} />
                 ))}
                 {provided.placeholder}
               </div>
