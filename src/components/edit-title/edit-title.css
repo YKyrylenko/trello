@@ -1,0 +1,7 @@
+.edit-title {
+  padding: 0;
+  resize: none;
+  border: none;
+  outline-color: blue;
+  overflow: hidden;
+}

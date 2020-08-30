@@ -1,16 +1,15 @@
 import React, { FC, useState } from "react";
-import { useDispatch } from "react-redux";
 import { changeTaskTitle } from "../../actions/taskActions";
 import { Draggable } from "react-beautiful-dnd";
+import { compare } from "../../utils/compare";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import DescriptionIcon from "@material-ui/icons/Description";
-import compareAsc from "date-fns/compareAsc";
-import addDays from "date-fns/addDays";
 import EditIcon from "@material-ui/icons/Edit";
 import TaskDialog from "../task-dialog";
+import TaskModel from "../../models/task";
+import EditTitle from "../edit-title";
 
 import "./task.css";
-import TaskModel from "../../models/task";
 
 interface TaskProps {
   task: TaskModel;
@@ -23,29 +22,12 @@ const Task: FC<TaskProps> = ({
   index,
   task: { id, title, description, term },
 }) => {
-  const dispatch = useDispatch();
-
-  const [newTitle, setNewTitle] = useState<string>(title);
-
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isEdited, setIsEdited] = useState<boolean>(false);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    setNewTitle(e.target.value);
-  };
-
-  const handleEditButtonClick = (): void => {
-    setIsClicked(true);
-  };
-
-  const handleBlur = (): void => {
-    if (newTitle !== title) {
-      dispatch(changeTaskTitle(newTitle, id, columnId));
-    }
-    setIsClicked(false);
+  const toggleEdit = (): void => {
+    setIsEdited(!isEdited);
   };
 
   const handleOpenDialog = (): void => {
@@ -54,24 +36,6 @@ const Task: FC<TaskProps> = ({
 
   const handleCloseDialog = (): void => {
     setIsDialogOpen(false);
-  };
-
-  const compare = (term: any): string => {
-    let className = "task";
-    if (term) {
-      let dt = new Date(term);
-      let currentDate = new Date();
-      currentDate.setHours(0, 0, 0, 0);
-      dt.setHours(0, 0, 0, 0);
-      if (compareAsc(currentDate, dt) > 0) {
-        className += " expiredTerm";
-      } else if (compareAsc(currentDate, dt) === 0) {
-        className += " equalTerm";
-      } else if (compareAsc(addDays(currentDate, 1), dt) === 0) {
-        className += " oneDayLeftTerm";
-      }
-    }
-    return className;
   };
 
   return (
@@ -87,7 +51,7 @@ const Task: FC<TaskProps> = ({
           handleClose={handleCloseDialog}
         />
       )}
-      {!isClicked && (
+      {!isEdited && (
         <Draggable draggableId={`${id}`} index={index}>
           {(provided) => (
             <div
@@ -102,23 +66,25 @@ const Task: FC<TaskProps> = ({
               <EditIcon
                 fontSize="small"
                 className="edit-icon"
-                onClick={handleEditButtonClick}
+                onClick={toggleEdit}
               />
               <div className="badges">
                 {term && <AccessTimeIcon />}
-                {description && <DescriptionIcon />}{" "}
+                {description && <DescriptionIcon />}
               </div>
             </div>
           )}
         </Draggable>
       )}
-      {isClicked && (
-        <textarea
-          className="change-title"
-          value={newTitle}
+      {isEdited && (
+        <EditTitle
+          title={title}
+          taskId={id}
+          columnId={columnId}
+          type="task-edit-title"
           autoFocus={true}
-          onChange={handleInputChange}
-          onBlur={handleBlur}
+          action={changeTaskTitle}
+          event={toggleEdit}
         />
       )}
     </React.Fragment>

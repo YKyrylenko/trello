@@ -14,20 +14,21 @@ interface AddTaskAction {
   };
 }
 
-interface ChangeTaskTitleAction {
+export interface ChangeTaskTitleAction {
   type: typeof CHANGE_TASK_TITLE;
   payload: {
-    taskId: number;
-    newTitle: string;
     columnId: number;
+    newTitle: string;
+    taskId: number;
   };
 }
-interface AddTaskDescriptionAction {
+
+export interface AddTaskDescriptionAction {
   type: typeof ADD_TASK_DESCRIPTION;
   payload: {
-    taskId: number;
-    description: string;
     columnId: number;
+    description: string;
+    taskId: number;
   };
 }
 
@@ -49,22 +50,18 @@ export const addTask = (newTask: Task, columnId: number): AddTaskAction => ({
 });
 
 export const changeTaskTitle = (
+  columnId: number,
   newTitle: string,
-  taskId: number,
-  columnId: number
+  taskId: number
 ): ChangeTaskTitleAction => ({
   type: CHANGE_TASK_TITLE,
-  payload: {
-    taskId,
-    newTitle,
-    columnId,
-  },
+  payload: { columnId, taskId, newTitle },
 });
 
 export const addTaskDescription = (
-  taskId: number,
+  columnId: number,
   description: string,
-  columnId: number
+  taskId: number
 ): AddTaskDescriptionAction => ({
   type: ADD_TASK_DESCRIPTION,
   payload: {
