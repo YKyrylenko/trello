@@ -11,7 +11,7 @@ interface DeleteColumnAction {
   payload: number;
 }
 
-interface ChangeColumnTitleAction {
+export interface ChangeColumnTitleAction {
   type: typeof CHANGE_COLUMN_TITLE;
   payload: {
     id: number;

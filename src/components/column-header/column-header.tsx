@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
-import { useDispatch } from "react-redux";
 import { changeColumnTitle } from "../../actions/columnActions";
+import EditTitle from "../edit-title";
 
 import "./column-header.css";
 
@@ -10,47 +10,24 @@ interface ColumnHeaderProps {
 }
 
 const ColumnHeader: FC<ColumnHeaderProps> = ({ title, id }) => {
-  const dispatch = useDispatch();
+  const [isEdited, setIsEdited] = useState<boolean>(false);
 
-  const [isTileChange, setIsTitleChange] = useState<boolean>(false);
-
-  const [newTitle, setNewTitle] = useState<string>(title);
-
-  const changeTitle = () => {
-    dispatch(changeColumnTitle(id, newTitle));
-    setIsTitleChange(false);
-  };
-
-  const handleTitleClick = (): void => {
-    setIsTitleChange(true);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setNewTitle(e.target.value);
-  };
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    changeTitle();
-  };
-
-  const onBlur = (): void => {
-    changeTitle();
+  const toggleEdit = (): void => {
+    setIsEdited(!isEdited);
   };
 
   return (
     <div className="column-header">
-      {!isTileChange && <span onClick={handleTitleClick}>{title} </span>}
-      {isTileChange && (
-        <form onSubmit={onSubmit}>
-          <input
-            className="change-title-input"
-            value={newTitle}
-            autoFocus={true}
-            onChange={handleChange}
-            onBlur={onBlur}
-          />
-        </form>
+      {!isEdited && <span onClick={toggleEdit}>{title} </span>}
+      {isEdited && (
+        <EditTitle
+          title={title}
+          columnId={id}
+          type="column-edit-title"
+          autoFocus={true}
+          action={changeColumnTitle}
+          event={toggleEdit}
+        />
       )}
     </div>
   );

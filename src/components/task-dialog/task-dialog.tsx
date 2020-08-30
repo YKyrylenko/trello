@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { addTaskDescription, addTaskTerm } from "../../actions/taskActions";
+import { addTaskTerm } from "../../actions/taskActions";
 import TaskDialogHeader from "../task-dialog-header";
 import TaskDialogContent from "../task-dialog-content";
 
@@ -29,10 +29,6 @@ const TaskDialog: FC<TaskDialogProps> = ({
 }) => {
   const dispatch = useDispatch();
 
-  const addDescription = (description: string): void => {
-    dispatch(addTaskDescription(taskId, description, columnId));
-  };
-
   const addTerm = (term: string): void => {
     dispatch(addTaskTerm(taskId, term, columnId));
   };
@@ -46,7 +42,8 @@ const TaskDialog: FC<TaskDialogProps> = ({
       />
       <TaskDialogContent
         addTerm={addTerm}
-        addDescription={addDescription}
+        taskId={taskId}
+        columnId={columnId}
         description={description}
         term={term}
       />
