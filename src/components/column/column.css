@@ -19,7 +19,7 @@
 
 .close-icon {
   position: absolute;
-  left: calc(100% - 27px);
+  left: calc(100% - 25px);
   cursor: pointer;
 }
 

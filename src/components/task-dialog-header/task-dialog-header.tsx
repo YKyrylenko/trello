@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-
+import { changeTaskTitle } from "../../actions/taskActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ChangeTaskTitle from "../change-task-title";
+import EditTitle from "../edit-title";
 
 import "./task-dialog-header.css";
 
@@ -19,10 +19,13 @@ const TaskDialogHeader: FC<TaskDialogHeaderProps> = ({
   return (
     <div className="task-dialog-header">
       <DialogTitle>
-        <ChangeTaskTitle
+        <EditTitle
           title={taskTitle}
           taskId={taskId}
+          type="task-dialog-header-edit"
           columnId={columnId}
+          action={changeTaskTitle}
+          autoFocus={false}
         />
       </DialogTitle>
     </div>
